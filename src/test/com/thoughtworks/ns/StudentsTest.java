@@ -10,26 +10,21 @@ import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
 
 public class StudentsTest {
-    private final Student[] student_array = new Student[3];
     private final Students students = new Students();
 
     @Before
     public void setUp() {
-        student_array[0] = new Student("A", 100);
-        student_array[1] = new Student("B", 80);
-        student_array[2] = new Student("C", 59);
-
-        students.addStudent(student_array[0]);
-        students.addStudent(student_array[1]);
-        students.addStudent(student_array[2]);
+        students.addStudent(new Student("A", 100));
+        students.addStudent(new Student("B", 80));
+        students.addStudent(new Student("C", 59));
     }
 
     @Test
     public void should_get_all_students() {
         List<Student> another_students = new ArrayList<>();
-        another_students.add(student_array[0]);
-        another_students.add(student_array[1]);
-        another_students.add(student_array[2]);
+        another_students.add(new Student("A", 100));
+        another_students.add(new Student("B", 80));
+        another_students.add(new Student("C", 59));
 
         assertThat(students.getAllStudents(), is(another_students));
     }
@@ -37,8 +32,8 @@ public class StudentsTest {
     @Test
     public void should_get_students_score_more_than_60() {
         List<Student> another_students = new ArrayList<>();
-        another_students.add(student_array[0]);
-        another_students.add(student_array[1]);
+        another_students.add(new Student("A", 100));
+        another_students.add(new Student("B", 80));
 
         assertThat(students.getPassedStudents(), is(another_students));
     }

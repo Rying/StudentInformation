@@ -30,7 +30,7 @@ public class Display {
         };
     }
 
-    public String jsDisplayInArabicScore(Student student) {
+    public String jsonDisplayInArabicScore(Student student) {
         return "{" + getOneStudentInformationInArabicJson(student) + "}";
     }
 
@@ -38,7 +38,7 @@ public class Display {
         return student.getName() + ":" + student.getScore();
     }
 
-    public String jsDisplayInArabicScore(List<Student> students) {
+    public String jsonDisplayInArabicScore(List<Student> students) {
         return "{" + Joiner.on(",").join(getStudentsInformationArabicJson(students)) + "}";
     }
 
@@ -76,7 +76,7 @@ public class Display {
         };
     }
 
-    public String jsDisplayInRomaScore(Student student) {
+    public String jsonDisplayInRomaScore(Student student) {
         return "{" + getOneStudentInformationInRomaJson(student) + "}";
     }
 
@@ -84,7 +84,7 @@ public class Display {
         return student.getName() + ":" + student.getRomaScore();
     }
 
-    public String jsDisplayInRomaScore(List<Student> students) {
+    public String jsonDisplayInRomaScore(List<Student> students) {
         return "{" + Joiner.on(",").join(getStudentsInformationInRomaJson(students)) + "}";
     }
 

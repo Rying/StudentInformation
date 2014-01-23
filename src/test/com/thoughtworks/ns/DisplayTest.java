@@ -34,12 +34,12 @@ public class DisplayTest {
 
     @Test
     public void should_output_A100_in_json_right() {
-        assertThat(display.jsDisplayInArabicScore(new Student("A", 100)), is("{A:100}"));
+        assertThat(display.jsonDisplayInArabicScore(new Student("A", 100)), is("{A:100}"));
     }
 
     @Test
     public void should_output_all_students_in_json_right() {
-        assertThat(display.jsDisplayInArabicScore(students), is("{A:100,B:80,C:59}"));
+        assertThat(display.jsonDisplayInArabicScore(students), is("{A:100,B:80,C:59}"));
     }
 
     @Test
@@ -56,11 +56,11 @@ public class DisplayTest {
 
     @Test
     public void should_output_A100_in_JsonRoma_is_right() {
-        assertThat(display.jsDisplayInRomaScore(new Student("A", 100)), is("{A:C}"));
+        assertThat(display.jsonDisplayInRomaScore(new Student("A", 100)), is("{A:C}"));
     }
 
     @Test
     public void should_out_all_students_information_in_JsonRoma_is_right() {
-        assertThat(display.jsDisplayInRomaScore(students), is("{A:C,B:LXXX,C:LIX}"));
+        assertThat(display.jsonDisplayInRomaScore(students), is("{A:C,B:LXXX,C:LIX}"));
     }
 }
