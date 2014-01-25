@@ -1,5 +1,6 @@
 package com.thoughtworks.ns;
 
+import com.google.common.collect.ImmutableSet;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -11,13 +12,11 @@ import static org.junit.Assert.assertThat;
 
 public class DisplayTest {
     Display display = new Display();
-    private final List<Student> students = new ArrayList<>();
+    private List<Student> students;
 
     @Before
     public void setUp() {
-        students.add(new Student("A", 100));
-        students.add(new Student("B", 80));
-        students.add(new Student("C", 59));
+        students = new ArrayList<>(ImmutableSet.of(new Student("A", 100), new Student("B", 80), new Student("C", 59)));
     }
 
     @Test

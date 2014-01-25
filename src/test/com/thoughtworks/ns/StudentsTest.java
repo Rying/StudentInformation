@@ -1,5 +1,6 @@
 package com.thoughtworks.ns;
 
+import com.google.common.collect.ImmutableSet;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -21,20 +22,11 @@ public class StudentsTest {
 
     @Test
     public void should_get_all_students() {
-        List<Student> another_students = new ArrayList<>();
-        another_students.add(new Student("A", 100));
-        another_students.add(new Student("B", 80));
-        another_students.add(new Student("C", 59));
-
-        assertThat(students.getAllStudents(), is(another_students));
+        assertThat(students.getAllStudents(), is((List) new ArrayList<>(ImmutableSet.of(new Student("A", 100), new Student("B", 80), new Student("C", 59)))));
     }
 
     @Test
     public void should_get_students_score_more_than_60() {
-        List<Student> another_students = new ArrayList<>();
-        another_students.add(new Student("A", 100));
-        another_students.add(new Student("B", 80));
-
-        assertThat(students.getPassedStudents(), is(another_students));
+        assertThat(students.getPassedStudents(), is((List) new ArrayList<>(ImmutableSet.of(new Student("A", 100), new Student("B", 80)))));
     }
 }
