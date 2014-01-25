@@ -25,10 +25,7 @@ public class Student {
 
         Student student = (Student) o;
 
-        if (score != student.score) return false;
-        if (!name.equals(student.name)) return false;
-
-        return true;
+        return score == student.score && name.equals(student.name);
     }
 
     @Override
@@ -38,18 +35,4 @@ public class Student {
         return result;
     }
 
-    public String getRomaScore() {
-        String[][] RomaNumbers = {{"", "I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX"},
-                {"", "X", "XX", "XXX", "XL", "L", "LX", "LXX", "LXXX", "XCC"},
-                {"", "C", "CC", "CCC", "CD", "D", "DC", "DCC", "DCCC", "CM"}};
-        String RomaScore = "";
-        int factor, digit = 2;
-
-        for (factor = 100; factor > 0; factor /= 10) {
-            RomaScore += RomaNumbers[digit][(score / factor) % 10];
-            digit--;
-        }
-
-        return RomaScore;
-    }
 }

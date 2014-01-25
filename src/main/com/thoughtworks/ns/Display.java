@@ -9,6 +9,21 @@ import static com.google.common.collect.Lists.transform;
 
 public class Display {
 
+    public String getRomaScore(Student student) {
+        String[][] RomaNumbers = {{"", "I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX"},
+                {"", "X", "XX", "XXX", "XL", "L", "LX", "LXX", "LXXX", "XCC"},
+                {"", "C", "CC", "CCC", "CD", "D", "DC", "DCC", "DCCC", "CM"}};
+        String RomaScore = "";
+        int factor, digit = 2;
+
+        for (factor = 100; factor > 0; factor /= 10) {
+            RomaScore += RomaNumbers[digit][(student.getScore() / factor) % 10];
+            digit--;
+        }
+
+        return RomaScore;
+    }
+
     public String displayInArabicScore(Student student) {
         return student.getName() + "," + student.getScore();
     }
@@ -56,7 +71,7 @@ public class Display {
     }
 
     public String displayInRomaScore(Student student) {
-        return student.getName() + "," + student.getRomaScore();
+        return student.getName() + "," + getRomaScore(student);
     }
 
     public String displayInRomaScore(List<Student> students) {
@@ -81,7 +96,7 @@ public class Display {
     }
 
     private String getOneStudentInformationInRomaJson(Student student) {
-        return student.getName() + ":" + student.getRomaScore();
+        return student.getName() + ":" + getRomaScore(student);
     }
 
     public String jsonDisplayInRomaScore(List<Student> students) {
