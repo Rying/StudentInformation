@@ -2,6 +2,7 @@ package com.thoughtworks.ns;
 
 import com.google.common.base.Function;
 import com.google.common.base.Joiner;
+import net.sf.json.JSONObject;
 
 import java.util.List;
 
@@ -46,28 +47,19 @@ public class Display {
     }
 
     public String jsonDisplayInArabicScore(Student student) {
-        return "{" + getOneStudentInformationInArabicJson(student) + "}";
-    }
+        JSONObject jsonObject = new JSONObject();
 
-    private String getOneStudentInformationInArabicJson(Student student) {
-        return student.getName() + ":" + student.getScore();
+        jsonObject.put(student.getName(), student.getScore());
+
+        return jsonObject.toString().replace("\"", "");
     }
 
     public String jsonDisplayInArabicScore(List<Student> students) {
-        return "{" + Joiner.on(",").join(getStudentsInformationArabicJson(students)) + "}";
-    }
-
-    private List<String> getStudentsInformationArabicJson(List<Student> students) {
-        return transform(students, getEachStudentInformationArabicJson());
-    }
-
-    private Function<Student, String> getEachStudentInformationArabicJson() {
-        return new Function<Student, String>() {
-            @Override
-            public String apply(Student student) {
-                return getOneStudentInformationInArabicJson(student);
-            }
-        };
+        JSONObject jsonObject = new JSONObject();
+        for (Student student : students) {
+            jsonObject.element(student.getName(), student.getScore());
+        }
+        return jsonObject.toString().replace("\"", "");
     }
 
     public String displayInRomaScore(Student student) {
@@ -92,28 +84,19 @@ public class Display {
     }
 
     public String jsonDisplayInRomaScore(Student student) {
-        return "{" + getOneStudentInformationInRomaJson(student) + "}";
+        JSONObject jsonObject = new JSONObject();
+        jsonObject.element(student.getName(), getRomaScore(student));
+        return jsonObject.toString().replace("\"", "");
     }
 
-    private String getOneStudentInformationInRomaJson(Student student) {
-        return student.getName() + ":" + getRomaScore(student);
-    }
 
     public String jsonDisplayInRomaScore(List<Student> students) {
-        return "{" + Joiner.on(",").join(getStudentsInformationInRomaJson(students)) + "}";
+        JSONObject jsonObject = new JSONObject();
+        for (Student student : students) {
+            jsonObject.element(student.getName(), getRomaScore(student));
+        }
+        return jsonObject.toString().replace("\"", "");
     }
 
-    private List<String> getStudentsInformationInRomaJson(List<Student> students) {
-        return transform(students, getEachStudentInformationInRomaJson());
-    }
-
-    private Function<Student, String> getEachStudentInformationInRomaJson() {
-        return new Function<Student, String>() {
-            @Override
-            public String apply(Student student) {
-                return getOneStudentInformationInRomaJson(student);
-            }
-        };
-    }
 }
 

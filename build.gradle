@@ -6,9 +6,12 @@ repositories {
 }
 
 dependencies {
-    compile 'com.google.guava:guava:15.0'
+    compile(
+            'com.google.guava:guava:15.0',
+            'net.sf.json-lib:json-lib:2.4:jdk15'
+    )
 
-    testCompile (
+    testCompile(
             'junit:junit:4.11',
             'org.hamcrest:hamcrest-all:1.3'
     )
