@@ -12,7 +12,6 @@ import static com.google.common.collect.Collections2.filter;
 public class Students {
     private List<Student> students;
 
-
     public Students() {
         students = new ArrayList<>();
     }

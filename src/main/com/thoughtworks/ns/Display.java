@@ -9,7 +9,6 @@ import java.util.List;
 import static com.google.common.collect.Lists.transform;
 
 public class Display {
-
     public String getRomaScore(Student student) {
         String[][] RomaNumbers = {{"", "I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX"},
                 {"", "X", "XX", "XXX", "XL", "L", "LX", "LXX", "LXXX", "XCC"},
@@ -89,7 +88,6 @@ public class Display {
         return jsonObject.toString().replace("\"", "");
     }
 
-
     public String jsonDisplayInRomaScore(List<Student> students) {
         JSONObject jsonObject = new JSONObject();
         for (Student student : students) {
@@ -97,6 +95,5 @@ public class Display {
         }
         return jsonObject.toString().replace("\"", "");
     }
-
 }
 

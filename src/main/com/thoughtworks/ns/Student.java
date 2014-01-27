@@ -34,5 +34,4 @@ public class Student {
         result = 31 * result + score;
         return result;
     }
-
 }
